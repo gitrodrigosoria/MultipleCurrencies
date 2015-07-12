@@ -1,4 +1,0 @@
-C:\Users\Rodrigo\Desktop\Projetos\MTC\MTC\MTC\bin\MTC.dll
-C:\Users\Rodrigo\Desktop\Projetos\MTC\MTC\MTC\bin\MTC.pdb
-C:\Users\Rodrigo\Desktop\Projetos\MTC\MTC\MTC\obj\Release\MTC.dll
-C:\Users\Rodrigo\Desktop\Projetos\MTC\MTC\MTC\obj\Release\MTC.pdb
