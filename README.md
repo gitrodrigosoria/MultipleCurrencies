@@ -1,2 +1,2 @@
 # MultipleCurrencies
-Project created to retrieve price of Euro of various brokers, comparing with Real.
+Project created to retrieve price of global Euro and price of Euro in several brokers, to compare with Real currency.
