@@ -1,0 +1,5 @@
+D:\Programming\Projetos\GitHub\MultipleCurrencies\MTC\bin\MTC.dll.config
+D:\Programming\Projetos\GitHub\MultipleCurrencies\MTC\bin\MTC.dll
+D:\Programming\Projetos\GitHub\MultipleCurrencies\MTC\bin\MTC.pdb
+D:\Programming\Projetos\GitHub\MultipleCurrencies\MTC\obj\Debug\MTC.dll
+D:\Programming\Projetos\GitHub\MultipleCurrencies\MTC\obj\Debug\MTC.pdb
