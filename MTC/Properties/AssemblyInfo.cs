@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MTC")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("MTC - Multiple Currencies")]
+[assembly: AssemblyDescription("Project created to retrieve price of Euro of various brokers, comparing with Real.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MTC")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyProduct("MTC - Multiple Currencies")]
+[assembly: AssemblyCopyright("Copyright Â©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
