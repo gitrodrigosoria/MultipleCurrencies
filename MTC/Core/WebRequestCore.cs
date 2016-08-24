@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Net;
 
@@ -6,7 +5,7 @@ namespace MTC.Core
 {
     public static class WebRequestCore
     {
-        public static String getUrlContext(String url)
+        public static string GetUrlContext(string url)
         {
             WebRequest webRequest = null;            
 
@@ -22,7 +21,7 @@ namespace MTC.Core
 
             }
 
-            return String.Empty;
+            return string.Empty;
         }
     }
 }

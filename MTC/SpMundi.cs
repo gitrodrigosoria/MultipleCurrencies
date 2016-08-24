@@ -1,71 +1,67 @@
 using MTC.Core;
 using MTC.Entities;
-using System;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web.Script.Serialization;
 
 namespace MTC
 {
     public class SpMundi : ICore
     {
-        const String URL = @"http://www.spmundicambio.com.br/moedas-em-especie";
+        const string URL = @"http://www.spmundicambio.com.br/moedas-em-especie";
 
-        public String getQuotation()
+        public string GetQuotation()
         {
             // Request
-            String resultUrl = WebRequestCore.getUrlContext(URL);
+            var resultUrl = WebRequestCore.GetUrlContext(URL);
 
-            if (String.IsNullOrEmpty(resultUrl))
-                return String.Empty;            
+            if (string.IsNullOrEmpty(resultUrl))
+                return string.Empty;            
             
-            String[] coin = getCoin(resultUrl).Split('|');
-            String[] coinValue = getCoinValue(resultUrl).Split('|');
-            List<Coin> lstCoin = new List<Coin>();
+            var coin = GetCoin(resultUrl).Split('|');
+            var coinValue = GetCoinValue(resultUrl).Split('|');
+            var lstCoin = new List<Coin>();
 
-            for (Int32 index = 0; index < coin.Length; index++)
+            for (var index = 0; index < coin.Length; index++)
             {
-                lstCoin.Add(
-                    new Coin()
-                    {
-                        coin = convertTo(coin[index])
-                        , coin_value = coinValue[index]
-                    }
+                lstCoin.Add(new Coin(){
+                    Key = ConvertTo(coin[index]),
+                    Value = coinValue[index]} 
                 );
             }
 
-            return new JavaScriptSerializer().Serialize(lstCoin.OrderBy(x => x.coin));
+            return JsonConvert.SerializeObject(lstCoin.OrderBy(x => x.Key));            
         }
 
-        public String getCoinValue(String resultUrl)
+        public string GetCoinValue(string resultUrl)
         {
             // Get all values
-            StringBuilder sbConValue = new StringBuilder();
-            String result = String.Empty;
+            var sbConValue = new StringBuilder();
+            var result = string.Empty;
 
-            foreach (var item in RegexCore.getMatches(@"<div class=""price "">[\d\s\D]+?<\/div>", resultUrl))
+            foreach (var item in RegexCore.GetMatches(@"<div class=""price "">[\d\s\D]+?<\/div>", resultUrl))
             {
-                result = item.ToString().Replace(@"<div class=""price "">", String.Empty);
-                result = result.Replace("R$", String.Empty);
-                result = result.Replace(@"<button class=""buy pull-right"">Comprar</button>", String.Empty);
-                result = result.Replace("</div>", String.Empty);
+                result = item.ToString().Replace(@"<div class=""price "">", string.Empty);
+                result = result.Replace("R$", string.Empty);
+                result = result.Replace(@"<button class=""buy pull-right"">Comprar</button>", string.Empty);
+                result = result.Replace("</div>", string.Empty);
                 sbConValue.AppendFormat("{0}|", result.Trim());
             }
 
             return sbConValue.ToString().Trim().TrimEnd('|');
         }
 
-        public String getCoin(String resultUrl)
+        public string GetCoin(string resultUrl)
         {
             // Get all title's
-            StringBuilder sbCoin = new StringBuilder();
-            String result = String.Empty;
+            var sbCoin = new StringBuilder();
+            var result = string.Empty;
 
-            foreach (var item in RegexCore.getMatches(@"class=""product-box"">[\d\s\D]+?<img", resultUrl))
+            foreach (var item in RegexCore.GetMatches(@"class=""product-box"">[\d\s\D]+?<img", resultUrl))
             {
-                result = item.ToString().Replace(@"<div class=""title small"">", String.Empty);
-                result = result.Replace("<img", String.Empty);
+                result = item.ToString().Replace(@"<div class=""title small"">", string.Empty);
+                result = result.Replace("<img", string.Empty);
                 result = result.Split('-')[2];
                 sbCoin.AppendFormat("{0}|", result.Trim());
             }
@@ -73,7 +69,7 @@ namespace MTC
             return sbCoin.ToString().Trim().TrimEnd('|');
         }
 
-        public String convertTo(String coin)
+        public string ConvertTo(string coin)
         {
             return coin;
         }

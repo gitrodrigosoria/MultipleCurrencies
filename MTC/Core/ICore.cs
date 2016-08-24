@@ -1,12 +1,20 @@
 using System;
+using System.ServiceModel;
 
 namespace MTC.Core
 {
     public interface ICore
     {
-        String getQuotation();
-        String getCoinValue(String resultUrl);
-        String getCoin(String resultUrl);
-        String convertTo(String coin);
+        [OperationContract]
+        string GetQuotation();
+
+        [OperationContract]
+        string GetCoinValue(string resultUrl);
+
+        [OperationContract]
+        string GetCoin(string resultUrl);
+
+        [OperationContract]
+        string ConvertTo(string coin);
     }
 }
